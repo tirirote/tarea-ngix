@@ -8,18 +8,18 @@ Ahora modificamos la página web por defecto:
 
 ![image](https://github.com/user-attachments/assets/715ae7a9-c25c-4886-9d4f-2817cc557990)
 
-Implementamos virtual hosting:
+### Implementamos virtual hosting:
 
 *Ahora implementaremos un servicio de hosting a través de NGINX, para poder alojar nuestras páginas webs.*
 
 1. Crear los directorios para cada sitio:
-2. 
+
 ![image](https://github.com/user-attachments/assets/6ee06323-8346-46eb-b763-91b6c739b50d)
 
-3. Asignamos los permisos adecuados:
+2. Asignamos los permisos adecuados:
 ![image](https://github.com/user-attachments/assets/4f842761-2b30-4ee9-95dd-f1f97c9570e6)
 
-4. Creamos los html para las webs de ejemplo:
+3. Creamos los html para las webs de ejemplo:
 
 Index de web1:
 
@@ -30,21 +30,51 @@ Index de web2:
 ![image](https://github.com/user-attachments/assets/55eb20a1-ae5a-4947-bb82-8a28f8a6a687)
 
 4. Configuramos los archivos de configuración nginx:
+
 ```
 sudo nano /etc/nginx/sites-available/web1
 ```
+
 ![image](https://github.com/user-attachments/assets/82f4b41f-2ce4-43b4-a59b-8adfed36202d)
 
 
 5. Creamos los archivos de configuración para web1:
 
-6. Creamos los archivos de configuración para web2:
+```
+sudo nano /etc/nginx/sites-available/web2
+```
+
+![image](https://github.com/user-attachments/assets/010056d7-a793-40d1-869c-1d272f73d772)
+
+6. Creamos los archivos de configuración para web2
+
+```
+sudo ln -s /etc/nginx/sites-available/web1 /etc/nginx/sites-enables/
+```
+
+```
+sudo ln -s /etc/nginx/sites-available/web2 /etc/nginx/sites-enables/
+```
 
 7. Habilitamos los sitios creando enlaces simbólicos:
 
+```
+suno nano /etc/hosts
+```
+
 8. Editar el archivo de hosts para pruebas locales:
 
+```
+sudo nano /etc/hosts
+```
+
 9. Verificar la configuración de Nginx:
+
+```
+sudo nginx -t
+```
+
+![image](https://github.com/user-attachments/assets/05624aa9-1bfb-4777-8450-b00086880c0d)
 
 10. Reiniciamos el servicio de nginx:
 
@@ -52,7 +82,12 @@ sudo nano /etc/nginx/sites-available/web1
 sudo systemctl restart nginx
 ```
 
-Autentificación, Autorización y Control de acceso
+![image](https://github.com/user-attachments/assets/dfaeffc3-2bc8-4be7-85c8-f30e32744587)
+
+![image](https://github.com/user-attachments/assets/3e5de94b-0c42-4ed0-a0ee-15e0d0be77b2)
+
+
+### Autentificación, Autorización y Control de acceso
 1. Identificar las interfaces de red:
 2. Configurar el servidor para www.web1.org:
 3. Configurar el servidor para www.web2.org:
