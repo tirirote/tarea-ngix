@@ -88,41 +88,145 @@ sudo systemctl restart nginx
 
 
 ### Autentificación, Autorización y Control de acceso
-1. Identificar las interfaces de red:
-2. Configurar el servidor para www.web1.org:
-3. Configurar el servidor para www.web2.org:
-4. Comprobamos la nueva configuración:
-5. Reiniciamos el servicio de nginx:
-6. Instalamos apache2-utils:
-sudo apt install apache2-utils
-7. Creamos el archivo de contraseñas:
-sudo htpasswd -c /etc/nginx/.htpasswd usuario1
-sudo htpasswd /etc/nginx/.htpasswd usuario 2
 
-8. Creamos el directorio privado
-9. Configuramos nginx para proteger el directorio /privado:
-10. Verificar y recargar Nginx:
-11. Comprobamos el acceso:
-12. Modificamos la configuración de nginx para el dominio privado:
+1. Identificar las interfaces de red.
+
+```
+ip addr show
+```
+
+![image](https://github.com/user-attachments/assets/6190f983-d642-419a-860e-50db1015c54e)
+
+2. Configurar el servidor para www.web1.org.
+
 ```
 sudo nano /etc/nginx/sites-available/web1
 ```
 
-13. Reiniciamos el servicio de nginx:
+![image](https://github.com/user-attachments/assets/e00a7275-29df-44fe-807c-5841fbbd1976)
+
+3. Configurar el servidor para www.web2.org.
+
+```
+sudo nano /etc/nginx/sites-available/web2
+```
+
+![image](https://github.com/user-attachments/assets/cf04e2da-4e79-4a5f-8896-b43b623f5e8b)
+
+
+4. Comprobamos la nueva configuración.
+
+```
 sudo nginx -t
+```
 
-14. Comprobamos:
+5. Reiniciamos el servicio de nginx
 
-Seguridad:
+```
+sudo systemctl restart nginx
+```
+
+6. Instalamos apache2-utils.
+
+```
+sudo apt install apache2-utils
+```
+
+7. Creamos el archivo de contraseñas.
+
+```
+sudo htpasswd -c /etc/nginx/.htpasswd usuario1
+```
+
+```
+sudo htpasswd /etc/nginx/.htpasswd usuario 2
+```
+
+![image](https://github.com/user-attachments/assets/1e3201b6-6456-4c2b-b0a6-b60583c75a32)
+
+8. Creamos el directorio privado.
+
+````
+sudo mkdir /var/www/web1/privado
+````
+
+````
+sudo chmod -R 755 7var/www/web1
+````
+
+9. Configuramos nginx para proteger el directorio /privado.
+
+```
+sudo nano /etc/nginx/sites-available/web1
+```
+![image](https://github.com/user-attachments/assets/62b2d220-3416-445e-8bfb-fd851eaf65f2)
+
+10. Verificar y recargar Nginx.
+
+```
+sudo nginx -t
+```
+
+```
+sudo systemctl reload nginx
+```
+
+11. Comprobamos el acceso.
+
+![image](https://github.com/user-attachments/assets/08982891-3adb-41f1-9d47-c80b9f79c009)
+
+12. Modificamos la configuración de nginx para el dominio privado.
+
+```
+sudo nano /etc/nginx/sites-available/web1
+```
+
+![image](https://github.com/user-attachments/assets/37f7ee32-5703-4240-aeb0-c26e2e7f2c6e)
+
+13. Reiniciamos el servicio de nginx.
+
+```
+sudo nginx -t
+```
+
+```
+sudo systemctl restart nginx
+```
+
+### Seguridad.
+
 1. Instalamos certbot:
+
+````
+sudo apt update
+````
+
+````
+sudo apt install cerbot python3-certbot-nginx
+````
+
 2. Configuramos Nginx para https:
+
+````
+sudo ls /etc/nginx/sites-enables
+````
+
+````
+sudo nginx -t
+````
+
 3. Obtenemos un certificado con certbot:
+
+````
+sudo certbot --nginx -d www.web1.org
+````
+
 4. Verificamos y probamos:
 
+````
+sudo nginx -t
+````
 
-
-
-
-
-
-
+````
+sudo systemctl restart nginx
+````
