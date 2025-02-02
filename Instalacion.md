@@ -1,3 +1,5 @@
+## Instalación de NGINX
+
 *Realizaremos la instalación en sistemas Linux (Ubuntu/Debian):*
 
 1. **Actualizar el sistema**
