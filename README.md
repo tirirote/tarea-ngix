@@ -2,8 +2,8 @@
 
 ## Índice de la práctica
 
-1. Introducción.
-2. Comparativa con Apache.
-3. Configuración de red.
-4. Instalación de NGINX.
-5. Casos Prácticos.
+1. [Introducción.](Instalacion.md)
+2. [Comparativa con Apache.](Comparativa-con-APache.md)
+3. [Configuración de red.](Configuración-de-red.md)
+4. [Instalación de NGINX.](Instalación.md)
+5. [Casos Prácticos.](Casos-Prácticos.md)
